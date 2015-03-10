@@ -30,6 +30,11 @@ class Transformer extends Fractal\TransformerAbstract
     					case 'integer' : 
     						$value = (int) $value;
     					break;
+                        case 'date' :
+                           if ($value instanceof \Carbon\Carbon) {
+                                $value = $value->toFormattedDateString();
+                           } 
+                        break;
     				}
     			}
     			$formattedFields[$attributeName] = $value;

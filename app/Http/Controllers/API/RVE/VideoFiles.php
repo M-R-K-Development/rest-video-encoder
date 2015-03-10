@@ -1,15 +1,34 @@
-<?php namespace Rve\Http\Controllers\API\RVE;
+<?php 
+/**
+* Video Files service
+* Method for Video File via API
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
+*/
+namespace Rve\Http\Controllers\API\RVE;
 
 use Rve\Http\Requests;
 use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+/**
+* Video Files service
+* Method for Video File via API 
+*/
 class VideoFiles extends \Rve\Http\Controllers\API\API {
-
+	/**
+	 * Service name
+	 * @var string
+	 */
 	protected $name = 'Video Files';
-	protected $apiPrefix = 'api/rve/';
 
+	/**
+	 * API Prefix for version in service response
+	 * @var string
+	 */
+	protected $apiPrefix = 'api/rve/';
 
 	/**
 	 * Setting up the transformer to be a VideoFile Transformer

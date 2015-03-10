@@ -9,26 +9,22 @@
   </style>
 @endsection
 @section('content')
-  <section class="container"ng-app="app">
+  <section class="container" ng-app="app">
     <div class="header">
-      <h1>File upload</h1>
-      <p>Drop your files here and let's get started!</p>
+      <h1>Video upload</h1>
+      <p>Drop your video here and let's get started!</p>
     </div>
-
 
     <div flow-init="{target: '{{URL::to('/rve/api')}}/{{Config::get('rve.api-version')}}/files/upload', headers: {'X-Auth-Token':'{{$token}}'}, testChunks: false}"
          flow-files-submitted="$flow.upload()"
          flow-file-success="$file.msg = $message">
-      <div class="drop" flow-drop ng-class="dropClass">
-        <span class="btn btn-default" flow-btn>Upload File</span>
-        <span class="btn btn-default" flow-btn flow-directory ng-show="$flow.supportDirectory">Upload Folder</span>
-        <b>OR</b>
-        Drag And Drop your file here
+      <div class="drop">
+        <span class="btn btn-default accept-videos" flow-btn>Upload File</span>
       </div>
 
       <br/>
 
-      <div class="well">
+      <div class="well" ng-show="files">
         <a class="btn btn-small btn-success" ng-click="$flow.resume()">Resume all</a>
         <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause all</a>
         <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel all</a>
@@ -69,4 +65,10 @@
   <script type="text/javascript" src="/ng-vendors/angular-1.3.14/angular.min.js"></script>
   <script type="text/javascript" src="/ng-vendors/ng-flow/ng-flow-standalone.min.js"></script>
   <script type="text/javascript" src="/specifics/files/app.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('.accept-videos').children('input').attr('accept', 'video/mp4,video/mpeg,video/quicktime');
+    });
+  </script>
 @endsection

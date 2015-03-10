@@ -1,4 +1,12 @@
-<?php namespace Rve\Http\Middleware;
+<?php 
+/**
+* Services
+* Deal with the user token
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
+*/
+namespace Rve\Http\Middleware;
 
 use Closure;
 

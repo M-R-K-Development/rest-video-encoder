@@ -1,4 +1,11 @@
-<?php
+<?php 
+/**
+* Files
+* Handles the file creation via the API
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
+*/
 namespace Rve\Http\Controllers\API\RVE;
 
 use Rve\Http\Requests;
@@ -6,32 +13,35 @@ use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+/**
+ * Files - handling the creation of files via the api 
+ */
 class Files extends \Rve\Http\Controllers\API\API {
+	/**
+	 * Service name
+	 * @var string
+	 */
+	protected $name = 'Files';
+
+	/**
+	 * API Prefix for version in service response
+	 * @var string
+	 */
+	protected $apiPrefix = 'api/rve/';
 	
 	/**
 	 * Setting up the transformer to be a VideoFile Transformer
 	 * @param Request object self injected
 	 */
 	public function __construct(Request $request) {
-		//FIXME - wrogn transformer
-		$this->transformer = new \Rve\Http\Transformers\VideoFile;
+		$this->transformer = new \Rve\Http\Transformers\File;
 		parent::__construct($request);
 	}
 
 	/**
-	 * Get given Group resource
+	 * Store method used to upload a file chunk by chunk
 	 *
-	 * @param [type] $id [description]
-	 *
-	 * @return [type] [description]
-	 */
-	public function show($id) {
-	}
-
-	/**
-	 * Store method.
-	 *
-	 * @return [type] [description]
+	 * @return json the result of the upload
 	 */
 	public function store($input = null) {
 		
@@ -82,11 +92,11 @@ class Files extends \Rve\Http\Controllers\API\API {
 				$file->saveChunk();
 			} else {
 				// error, invalid chunk upload request, retry
-				return Response::make('Bad request', 400);
+				return \Response::make('Bad request', 400);
 			}
 		}
 
-		//FIXME :: $filename  = \Imm\Helpers\Sanitize::string($filename) . '.' . $extension;
+		$filename  = \Rve\Services\Helpers::sanitizeString($filename) . '.' . $extension;
 
 		$localPath = $storageLocation . $filename;
 		if ($file->validateFile() && $file->save($localPath)) {
@@ -101,20 +111,13 @@ class Files extends \Rve\Http\Controllers\API\API {
 			$input['path'] = $input['path'] . $filename;
 			$input['type'] = mime_content_type($localPath);
 
-			$immFile = \Rve\Models\File::create($input);
+			$file = \Rve\Models\File::create($input);
 
-			return json_encode([
-				'success'           => true,
-				'original_filename' => \Input::get('flowFilename'),
-				'filename'          => $filename,
-				'path'              => $input['path'],
-				'id'                => $immFile->id,
-				'type'              => $input['type'],
-				'created_at'        => $immFile->created_at->toFormattedDateString(),
-			]);
+			return $this->respondCreated($this->getResourceItem($file, $this->transformer));
+			
 		} else {
 			// This is not a final chunk, continue to upload
-			return Response::JSON(array('pending' => true));
+			return \Response::JSON(array('pending' => true));
 		}
 	}
 }

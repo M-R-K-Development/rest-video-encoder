@@ -130,9 +130,10 @@ class WebServices extends Controller {
      *
      * @return [type] [description]
      */
-    public function respondCreated($data)
+    public function respondCreated($resource, $headers = [])
     {
-        return $this->setStatusCode(201)->respond($this->_getOkResponse($data));
+        $data = $this->fractal->createData($resource)->toArray();
+        return $this->setStatusCode(200)->respond($this->_getOkResponse($data), $headers);
     }
 
     /**
@@ -254,7 +255,7 @@ class WebServices extends Controller {
      */
     public function getResourceItem($item, $tranformer)
     {
-        return new  League\Fractal\Resource\Item($item, $tranformer);
+        return new \League\Fractal\Resource\Item($item, $tranformer);
     }
 
     private function _setCorsHeaders(&$headers)

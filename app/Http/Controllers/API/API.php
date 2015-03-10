@@ -1,4 +1,11 @@
-<?php
+<?php 
+/**
+* API
+* Defines common function for any services
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
+*/
 namespace Rve\Http\Controllers\API;
 
 use Rve\Http\Requests;
@@ -6,6 +13,10 @@ use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+/**
+* API
+* Defines common method for any services
+*/
 class API extends \Rve\Http\Controllers\WebServices\WebServices {
 
 
@@ -13,10 +24,13 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	protected $apiPrefix = 'api/';
 	protected $transformer;
 
+	/**
+	 * Instantiate the service with API version and URL
+	 * @param Request $request self-injected Request object
+	 */
 	public function __construct(Request $request) {
 
 		$this->middleware('services');
-
 		
 		$routeResolver = $request->getRouteResolver();
 		$route = $routeResolver();
@@ -36,7 +50,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($input = null)
 	{
 		//
 	}
@@ -46,7 +60,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($input = null)
 	{
 		//
 	}
@@ -57,7 +71,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $input = null)
 	{
 		//
 	}
@@ -68,7 +82,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id, $input = null)
 	{
 		//
 	}

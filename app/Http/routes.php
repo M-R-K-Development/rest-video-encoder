@@ -16,6 +16,7 @@
 Route::group(['middleware' => 'refresh-token'], function() {
 	
 	Route::get('/upload', 'Files\FilesController@uploader');
+	Route::get('/files', 'Files\FilesController@files');
 	
 	
 
