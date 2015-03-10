@@ -35,7 +35,7 @@ class VideoFiles extends \Rve\Http\Controllers\API\API {
 
 		$records = $this->getRecords($input);
 
-	    $data = \Rve\Models\VideoFiles::search()->paginate($records);
+	    $data = \Rve\Models\VideoFile::search()->paginate($records);
 
 	    $collection = $this->getResourceCollectionWithPagination($data, $this->transformer);
 

@@ -1,6 +1,6 @@
 <?php namespace Rve\Services;
 
-use Rve\Models\User;
+use Rve\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

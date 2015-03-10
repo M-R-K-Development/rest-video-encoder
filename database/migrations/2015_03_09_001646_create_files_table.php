@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideoFilesTable extends Migration {
+class CreateFilesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateVideoFilesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('video_files', function(Blueprint $table)
+		Schema::create('files', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
@@ -21,6 +21,8 @@ class CreateVideoFilesTable extends Migration {
             $table->boolean('local')->default(1);
             $table->string('status');
             $table->text('attributes');
+            $table->text('original_filename');
+            $table->text('type')->nullable();
             $table->morphs('resolvable');
             
 
@@ -39,7 +41,7 @@ class CreateVideoFilesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('video_files');
+		Schema::drop('files');
 	}
 
 }

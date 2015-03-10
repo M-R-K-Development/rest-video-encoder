@@ -10,7 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+//Uploader
+
 Route::group(['middleware' => 'refresh-token'], function() {
+	
+	Route::get('/upload', 'Files\FilesController@uploader');
+	
+	
+
 	Route::get('/', 'WelcomeController@index');
 
 	Route::get('home', 'HomeController@index');
@@ -18,12 +26,12 @@ Route::group(['middleware' => 'refresh-token'], function() {
 	Route::controllers([
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController',
-
 	]);
 
 	/** VIDEO ENCODING SERVICES **/
 	Route::group(['prefix' => 'rve/api/1.0/'], function() {
 		Route::resource('video-files', 'API\RVE\VideoFiles');
+		Route::post('/files/upload', '\Rve\Http\Controllers\API\RVE\Files@store');
 	});
 	
 });

@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class VideoFiles extends BaseModel {
+class File extends BaseModel {
 
-	public $table = 'video_files';
+	public $table = 'files';
 
     //use SoftDeletingTrait;
 
@@ -14,6 +14,16 @@ class VideoFiles extends BaseModel {
 
     public $fillable = ['path', 'user_id', 'status', 'size', 'resolvable_type', 'resolvable_id', 'original_filename', 'type'];
 
+
+    /*public static function boot() {
+        File::creating(function ($file) {
+            $file->uuid = Uuid::uuid4();
+
+            if ($user = Auth::user()) {                
+                $file->user_id = $user_id;
+            }
+        });
+    }*/
     /*
      * gets the local location of the file.
      *

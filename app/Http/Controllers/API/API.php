@@ -28,27 +28,8 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 		$service = array('name' => $this->name, 'version' => $version, 'url' => \URL::to($route->getUri()));
       	parent::__construct($service);
 	}
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index($input = null)
-	{
-		// Input is being passed as a parameter so that we can mock it easily for the tests
-		// If it is not a test, we'll use the facade:
-		if (!$input) {
-			$input == \Input::all();
-		}
-
-		$records = $this->getRecords($input);
-
-	    $data = \Rve\Models\VideoFiles::search()->paginate($records);
-
-	    $collection = $this->getResourceCollectionWithPagination($data, $this->transformer);
-
-	    return $this->respondOK($collection);
-	}
+	
+	
 
 	/**
 	 * Show the form for creating a new resource.
