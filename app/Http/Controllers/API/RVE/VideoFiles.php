@@ -9,6 +9,14 @@ class VideoFiles extends \Rve\Http\Controllers\API\API {
 
 	protected $name = 'Video Files';
 	protected $apiPrefix = 'api/rve/';
+
+
+
+	public function __construct(Request $request) {
+		$this->transformer = new \Rve\Http\Transformers\VideoFile;
+		parent::__construct($request);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

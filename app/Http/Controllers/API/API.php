@@ -11,8 +11,9 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 
 	protected $name = 'API';
 	protected $apiPrefix = 'api/';
+	protected $transformer;
 
-	public function __construct(Request $request, \Rve\Http\Transformers\Transformer $transformer) {
+	public function __construct(Request $request) {
 
 		$this->middleware('services');
 
@@ -24,9 +25,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 		$prefix = $action['prefix'];
 		$version = substr($prefix, strlen($this->apiPrefix) + 1, strlen($prefix));
 		
-		$this->transformer = $transformer;
-      	
-      	$service = array('name' => $this->name, 'version' => $version, 'url' => \URL::to($route->getUri()));
+		$service = array('name' => $this->name, 'version' => $version, 'url' => \URL::to($route->getUri()));
       	parent::__construct($service);
 	}
 	/**
