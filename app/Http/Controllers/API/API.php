@@ -1,14 +1,34 @@
-<?php namespace Rve\Http\Controllers\API\RVE;
+<?php
+namespace Rve\Http\Controllers\API;
 
 use Rve\Http\Requests;
 use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class VideoFiles extends \Rve\Http\Controllers\API\API {
+class API extends \Rve\Http\Controllers\WebServices\WebServices {
 
-	protected $name = 'Video Files';
-	protected $apiPrefix = 'api/rve/';
+
+	protected $name = 'API';
+	protected $apiPrefix = 'api/';
+
+	public function __construct(Request $request, \Rve\Http\Transformers\Transformer $transformer) {
+
+		$this->middleware('services');
+
+		
+		$routeResolver = $request->getRouteResolver();
+		$route = $routeResolver();
+		$action = $route->getAction();
+
+		$prefix = $action['prefix'];
+		$version = substr($prefix, strlen($this->apiPrefix) + 1, strlen($prefix));
+		
+		$this->transformer = $transformer;
+      	
+      	$service = array('name' => $this->name, 'version' => $version, 'url' => \URL::to($route->getUri()));
+      	parent::__construct($service);
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -96,3 +116,4 @@ class VideoFiles extends \Rve\Http\Controllers\API\API {
 	}
 
 }
+

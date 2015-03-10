@@ -15,7 +15,7 @@ class Services {
 		
 		// Checking the X-Auth-Token parameter from the header to see if the user is authenticated
 		if (\Rve\Services\UserToken::checkAndAuthToken($request)) {
-      		return $next($request);	
+			return $next($request);	
       	} else {
       		//Authentication failed for some reason
       		return \Response::json(['error' => 'Forbidden'], 403);
