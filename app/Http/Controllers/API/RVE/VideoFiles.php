@@ -11,7 +11,10 @@ class VideoFiles extends \Rve\Http\Controllers\API\API {
 	protected $apiPrefix = 'api/rve/';
 
 
-
+	/**
+	 * Setting up the transformer to be a VideoFile Transformer
+	 * @param Request object self injected
+	 */
 	public function __construct(Request $request) {
 		$this->transformer = new \Rve\Http\Transformers\VideoFile;
 		parent::__construct($request);

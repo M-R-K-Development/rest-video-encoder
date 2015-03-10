@@ -185,7 +185,7 @@ class WebServices extends Controller {
         $this->_setCorsHeaders($headers);
 
         $data['token'] = $this->getToken();
-
+        
         return \Response::json(
                     $data,
                     $this->getStatusCode(),

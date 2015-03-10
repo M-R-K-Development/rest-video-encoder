@@ -78,12 +78,13 @@ class UserToken {
           $applicationId = \Session::get('token_app_id');
         }
 
+
         if ($applicationId == null) {
             $applicationId = '';
         }
 
         $token = '';
-
+        \Auth::logout();
         if (\Auth::check()) {
             $user = \Auth::user();
             $userToken = \Rve\Models\UserToken::where('user_id', $user->id)
@@ -102,16 +103,22 @@ class UserToken {
             $userToken->save();
         } else {
 
-            $userToken = \Rve\Models\UserToken::where('token', $inputToken)
+            if ($applicationId) {
+              $userToken = \Rve\Models\UserToken::where('token', $inputToken)
                 ->where('application_id', $applicationId)
                 ->first();
+            } else {
+              $userToken = \Rve\Models\UserToken::where('token', $inputToken)
+                ->whereNull('application_id')
+                ->first();
+            }
 
             if ($userToken) {
                 $user_id   = $userToken->user_id;
-                $user      = Sentry::findUserById($user_id);
-                Sentry::login($user);
-                $token = $userToken->token = hash('sha256', str_random(10), false);
-                $userToken->save();
+                \Auth::loginUsingId($user_id);
+                $user = \Auth::user();
+                $userToken = self::refreshToken($user);
+                $token = $userToken->token;
             }
         }
 
