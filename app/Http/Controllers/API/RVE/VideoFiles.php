@@ -1,11 +1,11 @@
-<?php namespace Rve\Http\Controllers;
+<?php namespace Rve\Http\Controllers\API\RVE;
 
 use Rve\Http\Requests;
 use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class RveApi extends Services\Services {
+class VideoFiles extends \Rve\Http\Controllers\WebServices\WebServices {
 
 	public function __construct(\Rve\Http\Transformers\VideoFile $transformer) {
 
@@ -14,7 +14,7 @@ class RveApi extends Services\Services {
 		$this->transformer = $transformer;
       	
       	//FIXME:
-      	$service = array('name' => 'Employees Service', 'version' => 'beta', 'url' => \URL::to('/services/employees'));
+      	$service = array('name' => 'Video Files', 'version' => 'beta', 'url' => \URL::to('/services/employees'));
       	parent::__construct($service);
 	}
 	/**

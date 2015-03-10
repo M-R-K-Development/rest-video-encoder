@@ -22,5 +22,8 @@ Route::group(['middleware' => 'refresh-token'], function() {
 	]);
 
 	/** VIDEO ENCODING SERVICES **/
-	Route::resource('api', 'RveApi');
+	Route::group(['prefix' => 'rve/api/1.0/'], function() {
+		Route::resource('video-files', 'API\RVE\VideoFiles');
+	});
+	
 });

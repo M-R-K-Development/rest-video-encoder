@@ -1,19 +1,51 @@
-<?php /**
-* Services class - defining a generic class for all services
+<?php 
+/**
+* WEB SERVICES
+* Defines methods for API services
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
 */
-namespace Rve\Http\Controllers\Services;
+namespace Rve\Http\Controllers\WebServices;
 
 use Rve\Http\Controllers\Controller;
 use \League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 /**
-* Generic class Services
+* Services
+* Defines methods for API services (format, pagination etc.)
 */
-class Services extends Controller {
+class WebServices extends Controller {
 
+    /**
+     * Information about the service ['name', 'version', 'url']
+     * @var Array
+     */
 	private $service;
+
+    /**
+     * Status of the current request
+     * @var integer
+     */
     protected $statusCode = 200;
-    protected $transformer, $fractal, $defaultRecord;
+
+    /**
+     * The transformer to use to format the result of the request
+     * @var Transformer
+     */
+    protected $transformer;
+
+    /**
+     * [$transformer description]
+     * @var [type]
+     */
+    protected $fractal;
+
+    /**
+     * [$transformer description]
+     * @var [type]
+     */
+    protected $defaultRecord;
 
     /**
     * __construct Instanciate a new Service

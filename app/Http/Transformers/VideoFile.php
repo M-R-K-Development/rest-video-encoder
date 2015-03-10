@@ -1,15 +1,20 @@
-<?php
+<?php 
+/**
+* Video transformer
+* User to format a video file
+* @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
+* @copyright  M R K Development Pty Ltd.
+* @license GNU GENERAL PUBLIC LICENSE
+*/
 namespace Rve\Http\Transformers;
 
-use League\Fractal;
-
-class VideoFile extends Fractal\TransformerAbstract
-{
-    public function transform(\Rve\Models\VideoFiles $file)
-    {
-            return [
-            	'id' => $file->id,
-            	'path' => $file->path,
-            	];
-    }
+/**
+* Video transformer
+* Extends the Transformer to format a video file
+*/
+class VideoFile extends \Rve\Http\Transformers\Transformer {
+  	protected $mapping = [
+  		'id' => 'id|int',
+  		'path' => 'path'
+  	];
 }
