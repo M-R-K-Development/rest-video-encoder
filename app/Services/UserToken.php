@@ -84,7 +84,7 @@ class UserToken {
         }
 
         $token = '';
-        \Auth::logout();
+        
         if (\Auth::check()) {
             $user = \Auth::user();
             $userToken = \Rve\Models\UserToken::where('user_id', $user->id)
@@ -121,7 +121,6 @@ class UserToken {
                 $token = $userToken->token;
             }
         }
-
         // Session::put('token', $token);
         return $token;
     }

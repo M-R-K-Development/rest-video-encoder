@@ -37,6 +37,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
 					<li><a href="/upload">Upload</a></li>
+					<li><a href="/videos">My Videos</a></li>
 					<li><a href="/files">My Files</a></li>
 				</ul>
 

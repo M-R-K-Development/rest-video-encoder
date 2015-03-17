@@ -18,11 +18,11 @@ Route::group(['middleware' => 'refresh-token'], function() {
 	Route::get('/upload', 'Files\FilesController@uploader');
 	Route::get('/files', 'Files\FilesController@files');
 	
-	
-
 	Route::get('/', 'WelcomeController@index');
 
 	Route::get('home', 'HomeController@index');
+
+	Route::get('videos', 'Videos\Videos@videos');
 
 	Route::controllers([
 		'auth' => 'Auth\AuthController',
@@ -31,6 +31,7 @@ Route::group(['middleware' => 'refresh-token'], function() {
 
 	/** VIDEO ENCODING SERVICES **/
 	Route::group(['prefix' => 'rve/api/1.0/'], function() {
+		Route::resource('videos', 'API\RVE\Videos');
 		Route::resource('video-files', 'API\RVE\VideoFiles');
 		Route::post('/files/upload', '\Rve\Http\Controllers\API\RVE\Files@store');
 	});

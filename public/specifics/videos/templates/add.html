@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Add a video</h2>
+		page: [[page]]
+		<form name="pageForm" novalidate>
+		  <div class="form-group">
+		    <label for="videoTitle">Title</label>
+		    <input type="text" class="form-control" ng-model="page.title" id="videoTitle" placeholder="Enter title" >
+		    <span ng-show="pageForm.page.title.$error.required">Title is required.</span>
+		  </div>
+		  <div class="form-group">
+		    <label for="videoDescription">Description</label>
+		    <textarea class="form-control" id="videoDescription" ng-model="page.description" placeholder="Enter description"></textarea>
+		  </div>
+
+		  <button ng-click="createVideo()" ng-disabled="pageForm.page.title.$dirty && pageForm.page.title.$invalid" class="btn btn-default">Next: Upload your video</button>
+		</form>
+	</div>
+</div>

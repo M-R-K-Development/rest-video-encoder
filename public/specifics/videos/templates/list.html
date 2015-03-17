@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12">
+		<a href="#add" class="btn btn-primary">Add a video</a>
+		<hr />
+	</div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Video title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="video in videos">
+      <th scope="row">[[video.id]]</th>
+      <td>[[video.title]]</td>
+      <td>[[video.description]]</td>
+      <td><button class="btn btn-danger">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>
