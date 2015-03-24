@@ -34,15 +34,6 @@ class Tokens extends \Rve\Http\Controllers\API\API {
 	}
 
 	/**
-	 * Respond OK if the user have a correct token
-	 * @return JSON the respond
-	 */
-	public function cors() {
-		return $this->respond([]);
-	}
-
-
-	/**
 	 * Get all the tokens - not allowed without parameters,
 	 * @return [type] [description]
 	 */

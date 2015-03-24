@@ -78,7 +78,15 @@ class Videos extends \Rve\Http\Controllers\API\API {
 	 */
 	public function store($input = null)
 	{
-		//
+		$input = \Input::json()->all();
+		
+        $video = \Rve\Models\Video::create($input);
+
+        if (!$video->validationErrors->isEmpty()) {
+            return $this->respondValidationErrors($video->validationErrors->all());
+        }
+
+        return $this->respondCreated(['id' => $video->id]);
 	}
 
 	/**
