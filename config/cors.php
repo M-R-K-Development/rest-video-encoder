@@ -29,7 +29,7 @@ return array(
         'rve/api/*' => array(
             'allowedOrigins' => array('*'),
             'allowedHeaders' => array('*'),
-            'allowedMethods' => array('*'),
+            'allowedMethods' => array('POST', 'PUT', 'GET', 'DELETE'),
             'maxAge' => 3600,
         ),
         '*' => array(

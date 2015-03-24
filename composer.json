@@ -10,7 +10,8 @@
 		"league/fractal": "dev-master",
 		"flowjs/flow-php-server": "0.2.1",
 		"rhumsaa/uuid": "~2.8",
-		"barryvdh/laravel-cors": "0.4.*"
+		"barryvdh/laravel-cors": "0.4.*",
+		"pda/pheanstalk": "3.0.2"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

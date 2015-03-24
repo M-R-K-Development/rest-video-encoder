@@ -38,6 +38,10 @@ class Files extends \Rve\Http\Controllers\API\API {
 		parent::__construct($request);
 	}
 
+	public function index() {
+		return $this->respond([]);
+	}
+
 	/**
 	 * Store method used to upload a file chunk by chunk
 	 *
@@ -88,6 +92,7 @@ class Files extends \Rve\Http\Controllers\API\API {
 		if (isset($_POST['ie-app'])) {
 			$file->saveChunk();
 		} else {
+
 			if ($file->validateChunk()) {
 				$file->saveChunk();
 			} else {
@@ -113,8 +118,9 @@ class Files extends \Rve\Http\Controllers\API\API {
 
 			$file = \Rve\Models\File::create($input);
 
-			return $this->respondCreated($this->getResourceItem($file, $this->transformer));
-			
+			$response = \Event::fire(new \Rve\Events\VideoUpload($file));
+
+			return $this->respondCreated(['id' => $file->id, 'path' => $file->path]);
 		} else {
 			// This is not a final chunk, continue to upload
 			return \Response::JSON(array('pending' => true));

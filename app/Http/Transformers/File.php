@@ -12,7 +12,7 @@ namespace Rve\Http\Transformers;
 * Video transformer
 * Extends the Transformer to format a video file
 */
-class VideoFile extends \Rve\Http\Transformers\Transformer {
+class File extends \Rve\Http\Transformers\Transformer {
   	protected $mapping = [
   		'success'           => 'success',
 		'original_filename' => 'original_filename',

@@ -24,7 +24,7 @@ class CreateFilesTable extends Migration {
             $table->text('original_filename');
             $table->text('type')->nullable();
             $table->morphs('resolvable');
-            
+            $table->text('links')->nullable();
 
             $table->index('user_id');
             $table->index('status');

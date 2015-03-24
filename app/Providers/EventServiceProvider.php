@@ -11,8 +11,8 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		'Rve\Events\VideoUpload' => [
+			'Rve\Handlers\Events\StartVideoEncoding',
 		],
 	];
 
