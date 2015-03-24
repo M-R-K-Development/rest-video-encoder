@@ -1,5 +1,6 @@
 <?php namespace Rve\Models;
 use Illuminate\Database\Eloquent\Model;
+use Rhumsaa\Uuid\Uuid;
 
 class Video extends BaseModel {
 
@@ -23,5 +24,16 @@ class Video extends BaseModel {
 	 * @var array
 	 */
 	protected $hidden = [];
+
+	/**
+	 * Adding a uuid self-generated on creationg
+	 */
+	public static function boot()
+	{
+		parent::boot();
+		Video::creating(function ($video) {
+			$video->uuid = Uuid::uuid4();
+		});
+	}
 
 }
