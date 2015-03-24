@@ -144,6 +144,7 @@ return [
 		'Rve\Providers\ConfigServiceProvider',
 		'Rve\Providers\EventServiceProvider',
 		'Rve\Providers\RouteServiceProvider',
+		'Barryvdh\Cors\CorsServiceProvider',
 
 	],
 

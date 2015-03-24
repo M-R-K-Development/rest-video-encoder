@@ -33,14 +33,11 @@ Route::group(['middleware' => 'refresh-token'], function() {
 
 	/** VIDEO ENCODING SERVICES **/
 	Route::group(['prefix' => 'rve/api/1.0/'], function() {
-		Route::resource('videos', 'API\RVE\Videos');
+		
 		Route::resource('video-files', 'API\RVE\VideoFiles');
 		Route::resource('tokens', 'API\RVE\Tokens');
 		Route::get('handshake', 'API\RVE\Tokens@handshake');
-		Route::match(['OPTIONS'], '/handshake', [
-				'uses' => 'API\RVE\Tokens@cors',
-				'as' => 'api.handshake.cors'
-			]);
+		Route::resource('videos', 'API\RVE\Videos');
 		Route::post('/files/upload', '\Rve\Http\Controllers\API\RVE\Files@store');
 	});
 	
