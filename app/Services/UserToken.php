@@ -43,7 +43,11 @@ class UserToken {
             $delay = time() - $timestamp;
             $timeInMinutes = $delay/60;
 
-            $expires = \Config::get('rve.expires');
+            if ($authInfo['app_id']) {
+              $expires = env($authInfo['app_id'].'.expires', 0);
+            } else {
+              $expires = \Config::get('rve.expires');
+            }
             if ($expires && $timeInMinutes < $expires) {
               $user = \Rve\User::find($userToken->user_id);
 
