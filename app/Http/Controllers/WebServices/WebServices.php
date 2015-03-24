@@ -282,7 +282,7 @@ class WebServices extends Controller {
     {
         $headers['Access-Control-Allow-Origin'] = '*';
         $headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-        $headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token';
+        $headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, X-App-ID';
     }
 
 }
