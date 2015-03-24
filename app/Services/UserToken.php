@@ -79,10 +79,6 @@ class UserToken {
         }
 
 
-        if ($applicationId == null) {
-            $applicationId = '';
-        }
-
         $token = '';
         
         if (\Auth::check()) {

@@ -1,7 +1,7 @@
 <?php namespace Rve\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class UserToken extends Model {
+class UserToken extends BaseModel {
 
 	/**
 	 * The database table used by the model.

@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Create a new token</h2>
+		<form name="tokenForm" novalidate>
+		  <div class="form-group">
+		    <input type="text" class="form-control" name="application_id" ng-model="token.application_id" placeholder="Enter application ID" required>
+		    <span ng-show="tokenForm.application_id.$error.required">Title is required.</span>
+		  </div>
+		  <a href="#" class="btn btn-default">Cancel</a>
+		  <button ng-click="createToken()" ng-hide="tokenForm.application_id.$error.required" ng-disabled="pageForm.page.title.$dirty && pageForm.page.title.$invalid" class="btn btn-primary">Create</button>
+		</form>
+	</div>
+</div>

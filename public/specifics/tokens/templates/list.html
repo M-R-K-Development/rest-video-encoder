@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12">
+		<a href="#add" class="btn btn-primary">Create new token</a>
+		<hr />
+	</div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Token</th>
+      <th>Application ID</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="token in tokens">
+      <th scope="row">[[token.id]]</th>
+      <td>[[token.token]]</td>
+      <td>[[token.application_id]]</td>
+      <td><button class="btn btn-danger" ng-click="destroyToken(token)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>

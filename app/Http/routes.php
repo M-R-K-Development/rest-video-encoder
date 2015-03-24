@@ -24,6 +24,8 @@ Route::group(['middleware' => 'refresh-token'], function() {
 
 	Route::get('videos', 'Videos\Videos@videos');
 
+	Route::get('tokens', 'Tokens\Tokens@index');
+
 	Route::controllers([
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController',
@@ -33,6 +35,8 @@ Route::group(['middleware' => 'refresh-token'], function() {
 	Route::group(['prefix' => 'rve/api/1.0/'], function() {
 		Route::resource('videos', 'API\RVE\Videos');
 		Route::resource('video-files', 'API\RVE\VideoFiles');
+		Route::resource('tokens', 'API\RVE\Tokens');
+		Route::get('handshake', 'API\RVE\Token@handshake');
 		Route::post('/files/upload', '\Rve\Http\Controllers\API\RVE\Files@store');
 	});
 	

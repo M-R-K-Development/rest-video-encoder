@@ -39,6 +39,7 @@
 					<li><a href="/upload">Upload</a></li>
 					<li><a href="/videos">My Videos</a></li>
 					<li><a href="/files">My Files</a></li>
+					<li><a href="/tokens">Tokens</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
