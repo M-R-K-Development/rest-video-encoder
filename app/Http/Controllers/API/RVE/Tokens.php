@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
  */
 class Tokens extends \Rve\Http\Controllers\API\API {
 	
+	protected $tokenExemption = ['cors'];
 
 	public function __construct(Request $request) {
 		$this->transformer = new \Rve\Http\Transformers\UserToken;
@@ -29,7 +30,15 @@ class Tokens extends \Rve\Http\Controllers\API\API {
 	 * @return JSON the respond
 	 */
 	public function handshake() {
-		$this->respondOK();
+		return $this->respond([]);
+	}
+
+	/**
+	 * Respond OK if the user have a correct token
+	 * @return JSON the respond
+	 */
+	public function cors() {
+		return $this->respond([]);
 	}
 
 

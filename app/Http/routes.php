@@ -36,7 +36,11 @@ Route::group(['middleware' => 'refresh-token'], function() {
 		Route::resource('videos', 'API\RVE\Videos');
 		Route::resource('video-files', 'API\RVE\VideoFiles');
 		Route::resource('tokens', 'API\RVE\Tokens');
-		Route::get('handshake', 'API\RVE\Token@handshake');
+		Route::get('handshake', 'API\RVE\Tokens@handshake');
+		Route::match(['OPTIONS'], '/handshake', [
+				'uses' => 'API\RVE\Tokens@cors',
+				'as' => 'api.handshake.cors'
+			]);
 		Route::post('/files/upload', '\Rve\Http\Controllers\API\RVE\Files@store');
 	});
 	

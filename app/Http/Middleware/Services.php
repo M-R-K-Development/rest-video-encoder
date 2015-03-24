@@ -26,7 +26,9 @@ class Services {
 			return $next($request);	
       	} else {
       		//Authentication failed for some reason
-      		return \Response::json(['error' => 'Forbidden'], 403);
+      		$service = new \Rve\Http\Controllers\WebServices\WebServices([]);
+
+      		return $service->respondForbidden();
       	}
 		
 	}

@@ -23,6 +23,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	protected $name = 'API';
 	protected $apiPrefix = 'api/';
 	protected $transformer;
+	protected $tokenExemption = [];
 
 	/**
 	 * Instantiate the service with API version and URL
@@ -30,7 +31,7 @@ class API extends \Rve\Http\Controllers\WebServices\WebServices {
 	 */
 	public function __construct(Request $request) {
 
-		$this->middleware('services');
+		$this->middleware('services', ['except' => $this->tokenExemption]);
 		
 		$routeResolver = $request->getRouteResolver();
 		$route = $routeResolver();

@@ -117,11 +117,32 @@ class WebServices extends Controller {
      * @return [type] [description]
      */
     public function respondOK($resource, $headers = [])
-    {
+    {   
         $data = $this->fractal->createData($resource)->toArray();
 
         return $this->setStatusCode(200)->respond($this->_getOkResponse($data), $headers);
     }
+
+    /**
+     * Resource Forbidden
+     *
+     * @param [type] $resource [description]
+     *
+     * @return [type] [description]
+     */
+    public function respondForbidden($headers = [])
+    {
+        $this->_setCorsHeaders($headers);
+        $data['token'] = $this->getToken();
+        
+        return \Response::json(
+                    ['error' => 'Forbidden'],
+                    403,
+                    $headers
+                );
+    }
+
+    
 
     /**
      * resource creation wrapper response.
