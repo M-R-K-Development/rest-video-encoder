@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 * Method for Video via API 
 */
 class Videos extends \Rve\Http\Controllers\API\API {
+	
 	/**
 	 * Service name
 	 * @var string
@@ -78,7 +79,7 @@ class Videos extends \Rve\Http\Controllers\API\API {
 	 */
 	public function store($input = null)
 	{
-		$input = \Input::json()->all();
+		$input = \Input::all();
 		
         $video = \Rve\Models\Video::create($input);
 
@@ -97,7 +98,13 @@ class Videos extends \Rve\Http\Controllers\API\API {
 	 */
 	public function show($id, $input = null)
 	{
-		//
+		$video = \Rve\Models\Video::find($id);
+		if (!$video) {
+			 return $this->respondNotFound("Resource not found");
+		}
+
+		$item = $this->getResourceItem($video, $this->transformer);
+		return $this->respondOK($item);
 	}
 
 	/**

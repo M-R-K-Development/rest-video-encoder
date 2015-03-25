@@ -13,8 +13,28 @@ namespace Rve\Http\Transformers;
 * Extends the Transformer to format a video file
 */
 class Video extends \Rve\Http\Transformers\Transformer {
+
+	/**
+     * List all the includes name available
+     * @var Array
+     */
+    protected $availableIncludes = [
+    	'file'
+    ];
+
+
   	protected $mapping = [
   		'id' => 'id|int',
-  		'path' => 'path'
+  		'path' => 'path',
+  		'title' => 'title',
+  		'description' => 'description',
   	];
+
+
+  	 public function includeFile(\Rve\Models\Video $video)
+    {
+        $file = $video->file;
+        
+        return $this->item($file, new File);
+    }
 }

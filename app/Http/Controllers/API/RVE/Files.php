@@ -115,7 +115,7 @@ class Files extends \Rve\Http\Controllers\API\API {
 			}
 			$input['path'] = $input['path'] . $filename;
 			$input['type'] = mime_content_type($localPath);
-
+			$input['video_id'] = \Input::get('videoId');
 			$file = \Rve\Models\File::create($input);
 
 			$response = \Event::fire(new \Rve\Events\VideoUpload($file));

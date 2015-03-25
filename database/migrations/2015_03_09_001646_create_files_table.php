@@ -16,6 +16,7 @@ class CreateFilesTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('video_id')->unsigned();
             $table->string('path');
             $table->integer('size')->unsigned();
             $table->boolean('local')->default(1);

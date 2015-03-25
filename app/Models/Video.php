@@ -36,4 +36,9 @@ class Video extends BaseModel {
 		});
 	}
 
+	public function file()
+    {
+        return $this->hasOne('Rve\Models\File');
+    }
+
 }

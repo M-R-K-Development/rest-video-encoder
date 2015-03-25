@@ -12,7 +12,7 @@ class File extends BaseModel {
         'user_id' => 'required'
     ];
 
-    public $fillable = ['path', 'user_id', 'status', 'size', 'resolvable_type', 'resolvable_id', 'original_filename', 'type', 'links'];
+    public $fillable = ['path', 'user_id', 'video_id', 'status', 'size', 'resolvable_type', 'resolvable_id', 'original_filename', 'type', 'links'];
 
 }
 

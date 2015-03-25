@@ -14,12 +14,13 @@ namespace Rve\Http\Transformers;
 */
 class File extends \Rve\Http\Transformers\Transformer {
   	protected $mapping = [
-  		'success'           => 'success',
+  		'status'           => 'status',
 		'original_filename' => 'original_filename',
 		'filename'          => 'filename',
 		'path'  => 'path',
 		'id' => 'id|integer',
 		'type' => 'type',
 		'created_at' => 'create_at|date',
+		'links' => 'links|json'
   	];
 }

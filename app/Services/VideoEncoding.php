@@ -19,7 +19,7 @@ class VideoEncoding {
     $videoFile = storage_path('user-data' . $file->path);
     if (file_exists($videoFile)) {
       
-      $links[$quality] = $this->encode($videoFile, $quality);
+      $links[$quality] = env('PUBLIC_URL', 'http://localhost').'/videos/'.$this->encode($videoFile, $quality);
       
       $file->links = json_encode($links);
       if (isset($data['last'])) {

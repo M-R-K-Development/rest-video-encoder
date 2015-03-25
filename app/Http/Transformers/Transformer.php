@@ -18,6 +18,12 @@ class Transformer extends Fractal\TransformerAbstract
 	 */
 	protected $mapping = ['id' => 'id|integer'];
 
+    /**
+     * List all the includes name available
+     * @var Array
+     */
+    protected $availableIncludes = [];
+
 	public function transform(\Rve\Models\BaseModel $model)
     {
     		$formattedFields = [];
@@ -34,6 +40,9 @@ class Transformer extends Fractal\TransformerAbstract
                            if ($value instanceof \Carbon\Carbon) {
                                 $value = $value->toFormattedDateString();
                            } 
+                        break;
+                        case 'json' :
+                          $value = json_decode($value);
                         break;
     				}
     			}
