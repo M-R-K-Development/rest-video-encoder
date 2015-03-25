@@ -27,7 +27,7 @@ class Status extends \Rve\Http\Controllers\API\API {
 	 * @return [type] [description]
 	 */
 	public function index($input = null) {
-		return $this->respond(['max_size' => 1024*1024*500]);
+		return $this->respond(['max_size' => env('FLOW_MAX_SIZE', 5),]);
 	}
 
 	/**
