@@ -13,24 +13,11 @@ use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-/**
- * Files - handling the creation of files via the api 
- */
 class Tokens extends \Rve\Http\Controllers\API\API {
 	
-	protected $tokenExemption = ['cors'];
-
 	public function __construct(Request $request) {
 		$this->transformer = new \Rve\Http\Transformers\UserToken;
 		parent::__construct($request);
-	}
-
-	/**
-	 * Respond OK if the user have a correct token
-	 * @return JSON the respond
-	 */
-	public function handshake() {
-		return $this->respond([]);
 	}
 
 	/**

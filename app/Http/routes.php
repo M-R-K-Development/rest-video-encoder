@@ -38,7 +38,8 @@ Route::group(['middleware' => 'refresh-token'], function() {
 		Route::resource('tokens', 'API\RVE\Tokens');
 		Route::get('handshake', 'API\RVE\Tokens@handshake');
 		Route::resource('videos', 'API\RVE\Videos');
-		Route::resource('files', '\Rve\Http\Controllers\API\RVE\Files');
+		Route::resource('status', 'API\RVE\Status');
+		Route::resource('files', 'API\RVE\Files');
 	});
 	
 });
