@@ -14,4 +14,11 @@ class User extends BaseModel {
 
     public $fillable = ['name', 'email', 'password'];
 
+    public static function boot() {
+        parent::boot();
+       
+        User::creating(function ($user) {
+			$user->password = \Hash::make($user->password);
+		});
+    }
 }
