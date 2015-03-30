@@ -12,13 +12,10 @@ class CreateAppUser extends Migration {
 	 */
 	public function up()
 	{
-		$user                        = new User;
+		$user                        = new \Rve\Models\User;
         $user->email                 = 'email@domain.com';
         $user->password              = 'dqX43VrV';
-        $user->password_confirmation = 'dqX43VrV';
-        $user->confirmation_code     = md5(uniqid(mt_rand(), true));
-        $user->confirmed             = 1;
-
+        
         if (! $user->save()) {
             echo "Error creating user";
         } else {
