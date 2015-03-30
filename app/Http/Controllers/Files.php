@@ -6,11 +6,11 @@
 * @copyright  M R K Development Pty Ltd.
 * @license GNU GENERAL PUBLIC LICENSE
 */ 
-namespace Rve\Http\Controllers\Files;
+namespace Rve\Http\Controllers;
  
 use Rve\Http\Controllers\Controller;
 
-class FilesController extends Controller {
+class Files extends Controller {
 	
 	/**
 	 * Construct the class using the middleware Auth

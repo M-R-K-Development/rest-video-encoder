@@ -36,16 +36,23 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
-					<li><a href="/upload">Upload</a></li>
-					<li><a href="/videos">My Videos</a></li>
-					<li><a href="/files">My Files</a></li>
-					<li><a href="/tokens">Tokens</a></li>
+					@if (!Auth::guest())
+					<li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">System <span class="caret"></span></a>
+		                <ul class="dropdown-menu" role="menu">
+		                  <li><a href="/upload">Test upload</a></li>
+		                  <li><a href="/videos">List videos</a></li>
+		                  <li><a href="/files">List files</a></li>
+		                </ul>
+		              </li>
+					<li><a href="/tokens">API Subscription</a></li>
+					<li><a href="/users">Admin users</a></li>
+					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="/auth/login">Login</a></li>
-						<li><a href="/auth/register">Register</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

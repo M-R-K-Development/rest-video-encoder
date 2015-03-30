@@ -6,7 +6,7 @@
 * @copyright  M R K Development Pty Ltd.
 * @license GNU GENERAL PUBLIC LICENSE
 */
-namespace Rve\Http\Controllers\WebServices;
+namespace Rve\Http\Controllers;
 
 use Rve\Http\Controllers\Controller;
 use \League\Fractal\Pagination\IlluminatePaginatorAdapter;

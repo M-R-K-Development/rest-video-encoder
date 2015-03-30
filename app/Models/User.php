@@ -9,7 +9,8 @@ class User extends BaseModel {
     //use SoftDeletingTrait;
 
     public static $rules = [
-        
+        'email' => 'required|unique:users,email,NULL,id',
+        'password' => 'required',
     ];
 
     public $fillable = ['name', 'email', 'password'];

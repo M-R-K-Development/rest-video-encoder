@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-12">
+		<a href="#add" class="btn btn-primary">Create new user</a>
+		<hr />
+	</div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email address</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <th scope="row">[[user.id]]</th>
+      <td>[[user.email]]</td>
+      <td><button class="btn btn-danger" ng-click="destroyUser(user)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>

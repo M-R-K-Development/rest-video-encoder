@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 * API
 * Defines common method for any services
 */
-class API extends \Rve\Http\Controllers\WebServices\WebServices {
+class API extends \Rve\Http\Controllers\WebServices {
 
 
 	protected $name = 'API';

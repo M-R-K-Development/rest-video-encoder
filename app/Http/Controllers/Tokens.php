@@ -1,19 +1,19 @@
 <?php 
 /**
-* Files
-* Handles the file creation via the API
+* Tokens
+* Handles the token creation
 * @author  Gregoire Duché <greg.duche@mrkdevelopment.com>
 * @copyright  M R K Development Pty Ltd.
 * @license GNU GENERAL PUBLIC LICENSE
 */
-namespace Rve\Http\Controllers\Videos;
+namespace Rve\Http\Controllers;
 
 use Rve\Http\Requests;
 use Rve\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class Videos extends Controller {
+class Tokens extends Controller {
 
 	/**
 	 * Construct
@@ -30,9 +30,9 @@ class Videos extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function videos()
+	public function index()
 	{
-		return view('videos.list');
+		return view('tokens.list');
 	}
 
 	

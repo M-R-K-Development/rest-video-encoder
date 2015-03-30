@@ -15,31 +15,31 @@
 
 Route::group(['middleware' => 'refresh-token'], function() {
 	
-	Route::get('/upload', 'Files\FilesController@uploader');
-	Route::get('/files', 'Files\FilesController@files');
-	
-	Route::get('/', 'WelcomeController@index');
-
+	Route::get('/', 'HomeController@index');
 	Route::get('home', 'HomeController@index');
 
-	Route::get('videos', 'Videos\Videos@videos');
+	Route::get('/upload', 'Files@uploader');
+	Route::get('/files', 'Files@files');
+	Route::get('/videos', 'Videos@videos');
+	Route::get('/users', 'Users@index');
 
-	Route::get('tokens', 'Tokens\Tokens@index');
-
+	Route::get('tokens', 'Tokens@index');
+	
 	Route::controllers([
 		'auth' => 'Auth\AuthController',
 		'password' => 'Auth\PasswordController',
 	]);
 
 	/** VIDEO ENCODING SERVICES **/
-	Route::group(['prefix' => 'rve/api/1.0/'], function() {
+	Route::group(['prefix' => 'rve/api/1.0/', 'namespace' => 'API\RVE'], function() {
 		
-		Route::resource('video-files', 'API\RVE\VideoFiles');
-		Route::resource('tokens', 'API\RVE\Tokens');
-		Route::get('handshake', 'API\RVE\Tokens@handshake');
-		Route::resource('videos', 'API\RVE\Videos');
-		Route::resource('status', 'API\RVE\Status');
-		Route::resource('files', 'API\RVE\Files');
+		Route::resource('video-files', 'VideoFiles');
+		Route::resource('tokens', 'Tokens');
+		Route::get('handshake', 'Tokens@handshake');
+		Route::resource('videos', 'Videos');
+		Route::resource('status', 'Status');
+		Route::resource('files', 'Files');
+		Route::resource('users', 'Users');
 	});
 	
 });
