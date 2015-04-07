@@ -20,7 +20,7 @@ class Helpers {
 		} else {
 			$string = strtolower($string);
 		}
-		$string = preg_replace('/\p{Mn}/u', '', \Normalizer::normalize($string, \Normalizer::FORM_KD));
+		//FIXME:: $string = preg_replace('/\p{Mn}/u', '', \Normalizer::normalize($string, \Normalizer::FORM_KD));
 		$string = preg_replace('/[^%a-z0-9 _-]/', '', $string);
 		$string = preg_replace('/\s+/', '-', $string);
 		$string = preg_replace('|-+|', '-', $string);

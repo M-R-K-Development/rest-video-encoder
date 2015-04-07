@@ -42,7 +42,7 @@ class UserToken {
             $timestamp = $date->format('U');
             $delay = time() - $timestamp;
             $timeInMinutes = $delay/60;
-
+ 
             if ($authInfo['app_id']) {
               $expires = env($authInfo['app_id'].'.expires', 0);
             } else {
