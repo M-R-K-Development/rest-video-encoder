@@ -15,7 +15,7 @@
       <p>Drop your video here and let's get started!</p>
     </div>
 
-    <div flow-init="{target: '{{URL::to('/rve/api')}}/{{Config::get('rve.api-version')}}/files', headers: {'X-Auth-Token':'{{$token}}'}, testChunks: false}"
+    <div flow-init="{query:{videoId: 1}, target: '{{URL::to('/rve/api')}}/{{Config::get('rve.api-version')}}/files', headers: {'X-Auth-Token':'{{$token}}'}, testChunks: false}"
          flow-files-submitted="$flow.upload()"
          flow-file-success="$file.msg = $message">
       <div class="drop">
