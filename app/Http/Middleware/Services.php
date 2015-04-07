@@ -26,7 +26,7 @@ class Services {
 			return $next($request);	
       	} else {
       		//Authentication failed for some reason
-      		$service = new \Rve\Http\Controllers\WebServices\WebServices([]);
+      		$service = new \Rve\Http\Controllers\WebServices([]);
 
       		return $service->respondForbidden();
       	}
